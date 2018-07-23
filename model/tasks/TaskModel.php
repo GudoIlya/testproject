@@ -2,15 +2,15 @@
 
 class TaskModel extends DataBase{
 
-    public function __construct() {
-        parent::construct();
+    public function __construct(){
+        parent::__construct();
     }
 
     private function _getTasks() {
 
         $sql = "SELECT * FROM tasks";
-        $this->getDB()->prepare($sql);
-        $tasks = $this->getDB()->execute();
+        $this->connection()->prepare($sql);
+        $tasks = $this->connection()->execute();
         return $tasks;
     }
     public function getTasks() {
@@ -18,6 +18,16 @@ class TaskModel extends DataBase{
         return $tasks;
     }
 
+    public function fill() {
+
+    }
+
+    public function save() {
+        if(empty($_POST)) {return false;}
+        $sql = "INSERT INTO tasks (username, email, description, image) values(?, ?, ?, ?);";
+        $this->connection->prepare($sql);
+
+    }
 }
 
 ?>

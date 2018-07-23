@@ -13,13 +13,14 @@
                 <div class="navbar-header">
                     <a class="navbar-brand" href="#">Задачи</a>
                 </div>
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="/">Главная</a></li>
-                    <li><a href="/task/task/create">Создать</a></li>
-                    <?php if( Auth::checkAuth() ): ?>
+                <ul id="header-menu" class="nav navbar-nav">
+                    <?php $activeClassString = "class='active'"; ?>
+                    <li <?= $data['page'] == 'index' ? $activeClassString : ''?>><a href="/">Главная</a></li>
+                    <li <?= $data['page'] == 'create_task' ? $activeClassString : ''?>><a href="/task/task/create">Создать задачу</a></li>
+                    <?php if( Auth::loggedIn() ): ?>
                     <li><a href="/auth/auth/logout">Выйти</a></li>
                     <?php else: ?>
-                    <li><a href="/auth/auth/login">Войти</a></li>
+                    <li <?= $data['page'] == 'login' ? $activeClassString : ''?>><a href="/auth/auth/login">Войти</a></li>
                     <?php endif; ?>
                 </ul>
             </div>

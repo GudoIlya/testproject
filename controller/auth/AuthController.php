@@ -7,7 +7,7 @@ Class AuthController extends Controller {
     private $_loggedIn = false;
 
     public function __construct() {
-        $this->_loggedIn = Auth::loggenIn();
+        $this->_loggedIn = Auth::loggedIn();
         parent::__construct();
     }
 
@@ -23,6 +23,7 @@ Class AuthController extends Controller {
         }
 
         $data = array(
+            'page' => 'login',
             'title' => 'Войти'
         );
         return $this->view->getView('auth/login', $data);

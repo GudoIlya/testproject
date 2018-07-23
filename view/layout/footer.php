@@ -2,8 +2,6 @@
 <script type="text/javascript" src="/static/js/bootstrap.min.js"></script>
 <script type="text/javascript" src="/static/js/simple.pagination.js"></script>
 <script type="text/javascript" src="/static/js/tasksapp.js"></script>
-
-<?php echo ''; ?>
 </div><!-- header row -->
 <!-- Модальное окно для различных целей -->
 <div id="supportModalWindow" class="modal" tabindex="-1" role="dialog" aria-labelledby="supportModalWindow">

@@ -3,6 +3,7 @@ require_once "view/layout/header.php";
 ?>
 <div class="container">
 <form action="/auth/auth/login" method="POST">
+    <div class="text-danger"><?= isset($_SESSION['auth.error']) ? $_SESSION['auth.error'] : ''?></div>
     <div class="form-group">
         <label for="login">Логин</label>
         <input type="text" class="form-control" id="login" name="login" value="<?= isset($_SESSION['auth.old_login']) ? $_SESSION['auth.old_login'] : '' ?>">
