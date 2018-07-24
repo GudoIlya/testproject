@@ -2,13 +2,23 @@
 
 class TaskModel extends DataBase{
 
+    private $username;
+    private $email;
+    private $description;
+    /**
+     * @var array
+     */
+    private $photos;
+
     public function __construct(){
         parent::__construct();
     }
 
     private function _getTasks() {
 
-        $sql = "SELECT * FROM tasks";
+        $sql = "SELECT * FROM tasks t
+                LEFT task_photo tp ON t.id = tp.task_id";
+        $this->parseGet($sql);
         $this->connection()->prepare($sql);
         $tasks = $this->connection()->execute();
         return $tasks;
