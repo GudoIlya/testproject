@@ -25,10 +25,10 @@ class UserModel extends Model {
                 Auth::setLoggedIn($user);
                 return true;
             } else {
-                $error = Auth::AUTH_ERRORS['WRONG_USER_PASSWORD'];
+                $error = 'WRONG_USER_PASSWORD';
             }
         } else {
-            $error = Auth::AUTH_ERRORS['USER_NOT_FOUND'];
+            $error = 'USER_NOT_FOUND';
         }
         Auth::setAuthError($login, $error);
         return false;

@@ -4,11 +4,11 @@ class Auth
 {
 
     const ADMIN_ROLE = 1;
-    const AUTH_ERRORS = array(
+
+    private static $auth_errors = array(
         'USER_NOT_FOUND' => 'Пользователь не найден',
         'WRONG_USER_PASSWORD' => 'Неверный пароль'
     );
-    const USER_NOT_FOUND = 'Пользователь не найден!';
 
     public function __construct()
     {
@@ -52,9 +52,9 @@ class Auth
         $_SESSION['auth.error'] = '';
     }
 
-    static function setAuthError($old_login, $error) {
+    static function setAuthError($old_login, $errorid) {
         $_SESSION['auth.old_login'] = $old_login;
-        $_SESSION['auth.error'] = $error;
+        $_SESSION['auth.error'] = self::$auth_errors[$errorid];
     }
 }
 

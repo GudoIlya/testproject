@@ -1,3 +1,4 @@
+<?php require_once 'support/HtmlHelper.php'; ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,13 +15,12 @@
                     <a class="navbar-brand" href="#">Задачи</a>
                 </div>
                 <ul id="header-menu" class="nav navbar-nav">
-                    <?php $activeClassString = "class='active'"; ?>
-                    <li <?= $data['page'] == 'index' ? $activeClassString : ''?>><a href="/">Главная</a></li>
-                    <li <?= $data['page'] == 'create_task' ? $activeClassString : ''?>><a href="/task/task/create">Создать задачу</a></li>
+                    <li <?= HtmlHelper::checkActiveNavigationElement($data, 'index'); ?>><a href="/">Главная</a></li>
+                    <li <?= HtmlHelper::checkActiveNavigationElement($data, 'create_task'); ?>><a href="/task/task/create">Создать задачу</a></li>
                     <?php if( Auth::loggedIn() ): ?>
                     <li><a href="/auth/auth/logout">Выйти</a></li>
                     <?php else: ?>
-                    <li <?= $data['page'] == 'login' ? $activeClassString : ''?>><a href="/auth/auth/login">Войти</a></li>
+                    <li <?= HtmlHelper::checkActiveNavigationElement($data, 'login'); ?>><a href="/auth/auth/login">Войти</a></li>
                     <?php endif; ?>
                 </ul>
             </div>
