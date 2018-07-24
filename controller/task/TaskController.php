@@ -10,12 +10,15 @@ Class TaskController extends Controller{
     public function create() {
         if($_SERVER['REQUEST_METHOD'] == "POST") {
             $task = new TaskModel();
-            $task->fill();
-            $task->save();
+            if($task->save()) {
+                $message = 'Задача успешно создана';
+            }
         }
         $data = array(
             'page' => 'create_task',
-            'title' => 'Создание'
+            'title' => 'Создание',
+            'message' => isset($message) ? $message : '',
+            'error'   => isset($error) && $error != false ? $error : ''
         );
         return $this->view->getView('task/create', $data);
     }

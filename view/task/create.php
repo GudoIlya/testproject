@@ -2,6 +2,8 @@
 require_once "view/layout/header.php";
 ?>
 <div class="container">
+    <p class="text-success"><?= $data['message']; ?></p>
+    <p class="text-danger"><?= $data['error']; ?></p>
     <form id="create_task_form" action="/task/task/create" method="POST">
         <div class="form-group">
             <label for="username">Имя пользователя</label>
