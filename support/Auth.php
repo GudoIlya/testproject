@@ -25,7 +25,7 @@ class Auth
 
     static function checkIsAdmin()
     {
-        if ($_SESSION['role'] == ADMIN_ROLE) {
+        if (isset($_SESSION['role']) AND $_SESSION['role'] == self::ADMIN_ROLE) {
             return true;
         }
         return false;

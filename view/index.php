@@ -2,27 +2,24 @@
 require_once "view/layout/header.php";
 ?>
 <div class="container">
+    <?php
+    if(isset($data['tasks'])) {
+    foreach ($data['tasks'] as $task) {
+    $imageSrc = isset($task['photo']) ? FILES_DIRECTORY_URL . $task['photo'] : FILES_IMAGES_URL . 'no_photo.jpg';
+    ?>
     <div class="col-sm-4">
-        <h3>Название задачи</h3>
-        <div class="container-fluid">
-            Описание задачи
-        </div>
-        <div class="container-fluid">Кнопки</div>
+        <h3><?= $task['username']; ?></h3>
+        <h4><?= $task['email']; ?></h4>
+            <div class="container-fluid">
+                <p><img src="<?= $imageSrc; ?>" alt=""></p>
+                <p><?= $task['description']; ?></p>
+            </div>
+            <?php if (Auth::checkIsAdmin()) { ?>
+                <button class="editTask btn btn-info">E</button> <?php
+            } ?>
     </div>
-    <div class="col-sm-4">
-        <h3>Название задачи</h3>
-        <div class="container-fluid">
-            Описание задачи
-        </div>
-        <div class="container-fluid">Кнопки</div>
-    </div>
-    <div class="col-sm-4">
-        <h3>Название задачи</h3>
-        <div class="container-fluid">
-            Описание задачи
-        </div>
-        <div class="container-fluid">Кнопки</div>
-    </div>
+            <?php }
+            } ?>
     <ul class="pagination">
         <li><a href="#">1</a></li>
         <li><a href="#">2</a></li>

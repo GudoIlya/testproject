@@ -2,6 +2,7 @@
 
 class DataBase {
 
+    private $lastError;
     protected $connection;
 
     public function __construct() {
@@ -12,6 +13,17 @@ class DataBase {
         $this->connection = new PDO($dsn, DB_USER, DB_PASSWORD, $options);
     }
 
+    public function setLastError($error) {
+        $this->lastError = $error;
+    }
+
+    public function getLastError() {
+        return  $this->lastError;
+    }
+
+    public function parseGet(&$sql) {
+        return $sql;
+    }
 }
 
 ?>

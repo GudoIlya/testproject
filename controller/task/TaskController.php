@@ -12,6 +12,8 @@ Class TaskController extends Controller{
             $task = new TaskModel();
             if($task->save()) {
                 $message = 'Задача успешно создана';
+            } else {
+                $error = $task->getLastError();
             }
         }
         $data = array(
