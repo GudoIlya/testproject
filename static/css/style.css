@@ -1,3 +1,17 @@
 .hiddenDiv{
     display : none;
 }
+/*main tasks*/
+.t_img_wrapper {
+    min-height: 240px;
+    min-width:340px;
+}
+.t_img_wrapper img{
+    margin:0 auto;
+    max-height: 240px;
+    max-width:320px;
+}
+.t_description_wrapper{
+    max-height: 150px;
+    overflow:hidden;
+}

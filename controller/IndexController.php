@@ -9,11 +9,12 @@ Class IndexController extends Controller{
 
     public function index() {
         $tasksObject = new TaskModel();
-        $tasks = $tasksObject->getTasks();
+        $tasksData = $tasksObject->getTasks();
         $data = array(
             'page' => 'index',
             'title' => 'Главная страница',
-            'tasks'  => $tasks
+            'tasks'  => $tasksData,
+            'current_page' => isset($_GET['page']) ? $_GET['page'] : 1
         );
         return $this->view->getView('index', $data);
     }
